@@ -1,0 +1,1 @@
+I built a responsive, content-first page using CSS Grid for the two-column main layout and Flexbox for navigation, cards, and the footer. I used CSS variables for a consistent design system and clamp() for fluid type. The site is accessible (visible focus, semantic HTML) and requires no JavaScript 
