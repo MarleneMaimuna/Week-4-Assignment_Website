@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faith • Hope • Love – Responsive Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header + Navigation (Flexbox) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Faith<span>Site</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#highlights">Highlights</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <h1>Faith • Hope • Love</h1>
+      <p>Timeless words of Scripture presented with clarity and grace across devices.</p>
+      <blockquote class="verse">
+        <span>“Be still, and know that I am God.”</span>
+        <cite>— Psalm 46:10</cite>
+      </blockquote>
+      <a class="btn" href="#highlights">Explore</a>
+    </div>
+  </section>
+
+  <!-- GRID: main layout (content + sidebar) -->
+  <main class="container layout">
+    <!-- Main content -->
+    <section aria-labelledby="highlights-title" id="highlights" class="content">
+      <h2 id="highlights-title">Highlights</h2>
+
+      <!-- FLEX: card list -->
+      <div class="card-list">
+        <article class="card">
+          <h3>The Gospel in One Line</h3>
+          <p>“For God so loved the world that He gave His only Son.” <small>(John 3:16)</small></p>
+          <a class="link" href="#">Read more</a>
+        </article>
+        <article class="card">
+          <h3>Beatitudes</h3>
+          <p>Jesus blesses the humble, merciful, and pure in heart—calling us to a higher way of life.</p>
+          <a class="link" href="#">Sermon on the Mount</a>
+        </article>
+        <article class="card">
+          <h3>The Great Commandment</h3>
+          <p>Love God with all your heart—and love your neighbor as yourself. <small>(Mark 12:30–31)</small></p>
+          <a class="link" href="#">See the passage</a>
+        </article>
+      </div>
+
+      <!-- Secondary GRID: articles -->
+      <section aria-labelledby="articles-title" id="articles" class="articles">
+        <h2 id="articles-title">Articles & Reflections</h2>
+        <div class="articles-grid">
+          <article class="post">
+            <h3>Sermon on the Mount (Overview)</h3>
+            <p>From the Beatitudes to the Lord’s Prayer: a concise map of Jesus’ core kingdom teaching.</p>
+            <a class="link" href="#">Overview</a>
+          </article>
+          <article class="post">
+            <h3>Parables of Mercy</h3>
+            <p>Good Samaritan & Prodigal Son—stories that reveal God’s compassion and call us to imitate it.</p>
+            <a class="link" href="#">Dive in</a>
+          </article>
+          <article class="post">
+            <h3>Names of Jesus</h3>
+            <p>Lamb of God, Light of the World, Prince of Peace—titles that illuminate who He is.</p>
+            <a class="link" href="#">Discover</a>
+          </article>
+          <article class="post">
+            <h3>Practicing Devotion</h3>
+            <p>Prayer, Scripture, and service: simple rhythms for a faithful, Christ-centered life.</p>
+            <a class="link" href="#">Start</a>
+          </article>
+        </div>
+      </section>
+
+      
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-labelledby="aside-title">
+      <h2 id="aside-title">Sidebar</h2>
+      <nav aria-label="Secondary">
+        <ul class="side-links">
+          <li><a href="#">Scripture Reading Plan</a></li>
+          <li><a href="#">Worship Playlist</a></li>
+          <li><a href="#">Study Tools</a></li>
+        </ul>
+      </nav>
+
+      <section class="daily-verse">
+        <h3>Verse of the Day</h3>
+        <p class="daily-verse-text">“I am the light of the world.” <small>(John 8:12)</small></p>
+      </section>
+
+      <form class="newsletter" action="#" method="post">
+        <h3>Prayer Request</h3>
+        <label for="email">Your email</label>
+        <input id="email" type="email" name="email" placeholder="you@example.com" required />
+        <label for="message">How can we pray for you?</label>
+        <input id="message" type="text" name="message" placeholder="Write a short request…" />
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2025 FaithSite, By Marlene Paulino. “Faith, hope, and love…but the greatest is love.” <small>(1 Cor 13:13)</small></p>
+      <a class="link" href="#home">Back to top</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,272 @@
+/* ======================================================================
+   Base & Tokens
+   - Mobile-first
+   - Unidades relativas (rem, ch, vw)
+   - Variáveis para tema/escala
+====================================================================== */
+
+:root {
+  --maxw: 72rem;
+  --space-0: 0;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+
+  --radius: 1rem;
+  --radius-lg: 1.25rem;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+  --bg: #0f172a;        /* slate-950-ish */
+  --panel: #101827;     /* sutil variação para seções */
+  --surface: #111827;   /* cartões */
+  --text: #e5e7eb;      /* neutro claro */
+  --muted: #9ca3af;     /* cinza suave */
+  --brand: #60a5fa;     /* azul */
+  --brand-2: #34d399;   /* verde para pequenos acentos */
+  --focus: #fde047;     /* amarelo visível no foco */
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { font-size: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg), #0b1223 35%, #0a1222 100%);
+}
+
+/* Acessibilidade: foco sempre visível */
+:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Utilitários */
+.container {
+  width: min(100% - 2rem, var(--maxw));
+  margin-inline: auto;
+}
+
+/* Tipografia fluida */
+h1 { font-size: clamp(1.75rem, 2.5vw + 1rem, 3rem); line-height: 1.1; }
+h2 { font-size: clamp(1.25rem, 1.2vw + 1rem, 1.75rem); line-height: 1.2; margin: var(--space-3) 0 var(--space-2); }
+h3 { font-size: 1.05rem; margin: var(--space-2) 0 var(--space-1); }
+p  { color: var(--muted); }
+
+/* Links & Botões */
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: #0b1020;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  border: none;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.1); }
+.btn:active { transform: translateY(1px); }
+
+/* ======================================================================
+   Header (Flexbox)
+====================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(16, 24, 39, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.header-inner {
+  display: flex;               /* FLEX: distribuição horizontal */
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  gap: var(--space-2);
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #fff;
+  font-size: 1.25rem;
+}
+.brand span { color: var(--brand-2); }
+
+.site-nav .nav-list {
+  display: flex;               /* FLEX: menu */
+  gap: clamp(0.5rem, 3vw, 1.25rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;            /* mobile: mantém acessível sem quebrar */
+}
+.nav-list a {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  color: #e6edf7;
+}
+.nav-list a.active,
+.nav-list a:hover {
+  background: rgba(96,165,250,0.18);
+}
+
+/* ======================================================================
+   Hero (full-width)
+====================================================================== */
+.hero {
+  padding: var(--space-6) 0 var(--space-4);
+  background:
+    radial-gradient(1200px 300px at 80% -50%, rgba(96,165,250,0.25), transparent 60%),
+    radial-gradient(800px 250px at 20% -40%, rgba(52,211,153,0.25), transparent 60%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero-inner {
+  text-align: center;
+}
+.hero h1 span { color: var(--brand); }
+.hero p { margin: var(--space-2) auto var(--space-3); max-width: 60ch; }
+
+/* ======================================================================
+   Main Layout (CSS Grid)
+   Áreas nomeadas: content | sidebar
+====================================================================== */
+.layout {
+  /* GRID: principal */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "content"
+    "sidebar";
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+}
+
+.content { grid-area: content; }
+.sidebar { grid-area: sidebar; }
+
+/* ======================================================================
+   Cards (Flexbox)
+====================================================================== */
+.card-list {
+  display: flex;               /* FLEX: cards responsivos */
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block: var(--space-2) var(--space-3);
+}
+.card {
+  flex: 1 1 16rem;             /* cresce, encolhe, base */
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2);
+  box-shadow: var(--shadow);
+  min-height: 9rem;
+}
+.card .link { display: inline-block; margin-top: 0.5rem; }
+
+/* ======================================================================
+   Articles Grid (CSS Grid secundário)
+====================================================================== */
+.articles { margin-top: var(--space-4); }
+.articles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+.post {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  box-shadow: var(--shadow);
+}
+
+/* ======================================================================
+   Sidebar
+====================================================================== */
+.sidebar {
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2);
+  box-shadow: var(--shadow);
+}
+.side-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-3) 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.newsletter {
+  display: grid;
+  gap: 0.5rem;
+}
+.newsletter input {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.6rem;
+  background: #0c1324;
+  color: var(--text);
+}
+.newsletter input::placeholder { color: #6b7280; }
+
+/* ======================================================================
+   Footer
+====================================================================== */
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: var(--space-3) 0 var(--space-4);
+  background: #0c1223;
+}
+.footer-inner {
+  display: flex;               /* FLEX: alinhamento simples */
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ======================================================================
+   Media Queries (breakpoints em rem para responsividade real)
+====================================================================== */
+
+/* >= 48rem (~768px): 2 colunas, ajustes de densidade */
+@media (min-width: 48rem) {
+  .layout {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "content sidebar";
+    gap: var(--space-4);
+  }
+
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* >= 64rem (~1024px): mais respiro e grid de artigos 3 colunas */
+@media (min-width: 64rem) {
+  .layout { gap: var(--space-6); }
+
+  .articles-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header-inner { padding-block: var(--space-3); }
+}
